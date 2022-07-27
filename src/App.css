@@ -1,0 +1,104 @@
+.canvas {
+  height: 100vh;
+  width: 100vw;
+}
+/* BORRAR  */
+.App {
+  text-align: center;
+}
+
+.my-container {
+  display: inline-block;
+  position: relative;
+  width: 50%;
+  left: 25%;
+  right: 25%;
+}
+
+p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255);
+}
+
+.my-text {
+  font-size: 20px;
+}
+
+.game-prebox {
+  background: rgb(33, 33, 33, 0.3);
+  padding: 100px;
+}
+.gameover-footer {
+  border: 10px solid #61dafb;
+  border-radius: 35px;
+  background: rgba(33, 33, 33, 0.242);
+
+  min-height: 150vh;
+  padding-bottom: 40px;
+}
+
+.main {
+  height: 315vh;
+}
+
+.white-text {
+  color: antiquewhite;
+}
+
+.black-text {
+  color: black;
+}
+
+.game-info-text {
+  display: inline-flex;
+  margin: 20px;
+  max-height: 100px;
+  color: rgb(161, 160, 160);
+}
+
+.some-margin {
+  margin: 30px;
+}
+
+.modal-styles {
+  position: "fixed";
+  top: "50%";
+  left: "50%";
+  transform: "translate(-50%, -50%)";
+  background-color: "#FFF";
+  padding: "50px";
+  z-index: 1000;
+}
+.overlay-styles {
+  position: "fixed";
+  top: 0;
+  bottom: 0;
+  background-color: "rgba(0, 0, 0, .1)";
+  z-index: 1000;
+}
+
+.wallet-card {
+  display: "flex";
+  flex-direction: "column";
+  justify-content: space-between;
+  min-width: "5000px";
+  max-width: "5000px";
+  width: "1000px";
+  padding: "1rem";
+  margin: "20px";
+  overflow: "auto";
+  border: "1px solid";
+  border-radius: "1rem";
+}
+
+.select-menu {
+  background-color: rgb(36, 34, 34);
+  color: white;
+}
+.padding-margin {
+  padding: 50px;
+  margin: 200px;
+  border: #0dafdb99 solid 5px;
+  border-radius: 5% 5% 5% 5% / 10% 10% 10% 10%;
+  background-color: rgb(34, 32, 32);
+}
