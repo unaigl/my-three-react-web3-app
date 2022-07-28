@@ -1,5 +1,5 @@
 import { CameraShake, OrbitControls } from '@react-three/drei';
-import { Cloud, Sky, Html } from '@react-three/drei';
+import { Sky, Html } from '@react-three/drei';
 
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useState } from 'react';
@@ -10,8 +10,6 @@ import CameraRig from './camera/CameraRig';
 import Stars from './stars/Stars';
 import Spawner from './geometry/Spawner';
 import GltfLoader from './gltf/GltfLoader';
-
-
 
 const Game = () => {
 
@@ -34,12 +32,19 @@ const Game = () => {
 							rotation: [0, 0, 0],
 						}}>
 						<Lights />
-
-						{cameraMove ? <OrbitControls
+						{cameraMove ? <><OrbitControls
 							enableZoom={true}
 							enablePan={true}
 							enableRotate={true}
 						/>
+							<Html
+								as='h4'
+								position={[0, 5, -15]}
+								transform={true}
+							>
+								<h4 className="htmlcanvas" >Click to swift between different camera controls</h4>
+							</Html>
+						</>
 							:
 							<>
 								<CameraRig setmove={setmove} />
@@ -50,7 +55,7 @@ const Game = () => {
 								/>
 							</>
 						}
-						<GltfLoader url={'chair/armchairYellow.gltf'} position={[0, 0, -20]} setCameraMove={() => { setCameraMove(!cameraMove) }} />
+						<GltfLoader url={'chair/armchairYellow.gltf'} position={[0, 0, -15]} setCameraMove={() => { setCameraMove(!cameraMove) }} />
 						<Stars />
 						<Sky distance={450000}
 							sunPosition={[2, 1, 10]}
