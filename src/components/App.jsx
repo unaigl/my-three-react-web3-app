@@ -1,12 +1,14 @@
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { CameraShake, OrbitControls, Sky, Html } from '@react-three/drei';
+import { Physics } from '@react-three/cannon'
 
 import './App.css';
 import { Lights } from './lights/Lights';
 import CameraRig from './camera/CameraRig';
 import Stars from './stars/Stars';
 import GltfLoader from './gltf/GltfLoader';
+import Spawner from './geometry/Spawner';
 
 const App = () => {
 
@@ -64,6 +66,9 @@ const App = () => {
 							<CameraRig setmove={setmove} />
 						</>
 					}
+					<Physics>
+						<Spawner cameraMode={cameraMode} />
+					</Physics>
 				</Canvas>
 			</div>
 		</div>

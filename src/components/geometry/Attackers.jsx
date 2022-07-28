@@ -1,4 +1,4 @@
-/* import { useSphere } from '@react-three/cannon';
+import { useSphere } from '@react-three/cannon';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { Vector3 } from 'three';
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 
 const Attackers = (props) => {
 
-	const colorMap = useLoader(TextureLoader, props.texture)
-
-	let zMovement = -40;
+	let zMovement = -20;
 
 	const [ref, api] = useSphere(() => ({
 		mass: 0,
@@ -22,16 +20,14 @@ const Attackers = (props) => {
 	}));
 
 	useFrame(() => {
-		if (props.play) {
-			api.position.set(
-				props.pos.x,
-				props.pos.y,
-				(zMovement += 0.1) - props.wait
-			);
-		}
+		api.position.set(
+			props.pos.x,
+			props.pos.y,
+			(zMovement += 0.1) - props.wait
+		);
 	});
 
-	if (props.play) {
+	if (props.cameraMode) {
 		for (let i = 1; i < 20; i++) {
 			window.setTimeout(() => {
 				zMovement = -50;
@@ -43,21 +39,12 @@ const Attackers = (props) => {
 
 	return (
 		<mesh ref={ref}>
-			{props.play && <>
+			{props.cameraMode && <>
 				<sphereGeometry attach='geometry' args={[1, 32, 32]} />
-				<meshStandardMaterial map={colorMap} />
+				<meshStandardMaterial attach="material" color={props.color} />
 			</>}
 		</mesh>
 	);
 };
 
-Attackers.propTypes = {
-	play: PropTypes.bool,
-	pos: PropTypes.instanceOf(Vector3),
-	wait: PropTypes.number,
-	color: PropTypes.string,
-	texture: PropTypes.string,
-};
-
 export default Attackers;
- */
