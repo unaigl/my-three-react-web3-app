@@ -2,6 +2,11 @@
   height: 100vh;
   width: 100vw;
 }
+.html-canvas {
+  font-size: 2rem;
+  color: blanchedalmond;
+}
+
 /* BORRAR  */
 .App {
   text-align: center;
