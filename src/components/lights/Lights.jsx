@@ -5,6 +5,7 @@ export const Lights = () => {
 
 	const ref = useRef();
 	useFrame(() => {
+		// give rotation to the ilumination
 		ref.current.rotation.y -= 0.005
 	})
 

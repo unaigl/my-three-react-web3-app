@@ -1,10 +1,8 @@
 import { Stars } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
-// Mine
 
-
-const GameStars = () => {
+const StarsBG = () => {
 
 	const ref = useRef();
 	const ref2 = useRef();
@@ -14,10 +12,9 @@ const GameStars = () => {
 		ref2.current.rotation.y -= 0.0005
 	})
 
-
-	// TODO WinText component
 	return (
 		<>
+
 			<Stars
 				ref={ref}
 				radius={4}
@@ -44,5 +41,5 @@ const GameStars = () => {
 	);
 }
 
-export default GameStars;
+export default StarsBG;
 

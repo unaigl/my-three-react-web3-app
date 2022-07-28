@@ -9,7 +9,7 @@ function GltfLoader(props) {
       object={gltf.scene}
       dispose={null}
       position={props.position}
-      onClick={props.setCameraMove}
+      onClick={props.setCameraMode}
     />
   );
 }
