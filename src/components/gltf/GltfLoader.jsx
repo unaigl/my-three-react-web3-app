@@ -9,6 +9,7 @@ function GltfLoader(props) {
       object={gltf.scene}
       dispose={null}
       position={props.position}
+      // To switch between two different camera controls
       onClick={props.setCameraMode}
     />
   );

@@ -8,7 +8,6 @@ const Spawner = (props) => {
 
 	const [play, setPlay] = useState(false);
 
-
 	function randomIntBetween(min, max) { // min and max included 
 		return Math.floor(Math.random() * (max - min + 1) + min)
 	}
@@ -50,7 +49,7 @@ const Spawner = (props) => {
 		<group>
 			<mesh
 				ref={ref}
-				onClick={() => { console.log('firstAttackers') }}
+				onClick={() => { setPlay(true) }}
 			>
 				<boxGeometry attach='geometry' args={[1, 1, 1]} />
 				<meshStandardMaterial attach="material" color={'#000'} />
