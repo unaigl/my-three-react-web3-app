@@ -1,12 +1,9 @@
 import { Vector3 } from 'three';
 import Attackers from './Attackers';
-import { useBox } from '@react-three/cannon';
-import { useState } from 'react';
 
 
 const Spawner = (props) => {
 
-	const [play, setPlay] = useState(false);
 
 	function randomIntBetween(min, max) { // min and max included 
 		return Math.floor(Math.random() * (max - min + 1) + min)
@@ -37,31 +34,14 @@ const Spawner = (props) => {
 		attackersArray.push(att)
 	}
 
-	// This box is used to start the game
-	const [ref, api] = useBox(() => ({
-		mass: 0,
-		position: [0, 10, 0],
-		type: 'Dynamic',
-		args: [1, 1, 1],
-	}));
-
 	return (
 		<group>
-			<mesh
-				ref={ref}
-				onClick={() => { setPlay(true) }}
-			>
-				<boxGeometry attach='geometry' args={[1, 1, 1]} />
-				<meshStandardMaterial attach="material" color={'#000'} />
-			</mesh>
-
 			{attackersArray.map((attackers, key) => {
 				return <Attackers
 					key={key}
 					pos={attackers[0]}
 					wait={attackers[1]}
 					color={attackers[2]}
-					cameraMode={props.cameraMode}
 				/>
 			})}
 		</group>

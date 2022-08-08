@@ -27,22 +27,18 @@ const Attackers = (props) => {
 		);
 	});
 
-	if (props.cameraMode) {
-		for (let i = 1; i < 20; i++) {
-			window.setTimeout(() => {
-				zMovement = -50;
-				api.position.set(0, 0, -zMovement);
-				// 6 segs * i * wait= posicion de cada cubo para hacer que algunos salgan antes que otros
-			}, 6 * 1000 + props.wait * 100);
-		}
+	for (let i = 1; i < 20; i++) {
+		window.setTimeout(() => {
+			zMovement = -50;
+			api.position.set(0, 0, -zMovement);
+			// 6 segs * i * wait= posicion de cada cubo para hacer que algunos salgan antes que otros
+		}, 6 * 1000 + props.wait * 100);
 	}
 
 	return (
 		<mesh ref={ref}>
-			{props.cameraMode && <>
-				<sphereGeometry attach='geometry' args={[1, 32, 32]} />
-				<meshStandardMaterial attach="material" color={props.color} />
-			</>}
+			<sphereGeometry attach='geometry' args={[1, 32, 32]} />
+			<meshStandardMaterial attach="material" color={props.color} />
 		</mesh>
 	);
 };

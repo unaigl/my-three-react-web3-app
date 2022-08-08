@@ -58,12 +58,4 @@ PlayerBox.propTypes = {
 	setplay: PropTypes.func,
 };
 
-PlayerBox.propTypes = {
-	gameover: PropTypes.shape({
-		gameover: PropTypes.bool,
-		setgameover: PropTypes.func,
-	}),
-	setplay: PropTypes.func,
-};
-
 export default PlayerBox;
