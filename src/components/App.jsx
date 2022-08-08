@@ -9,7 +9,7 @@ import Stars from './stars/Stars';
 import GltfLoader from './gltf/GltfLoader';
 import ActivateSpawner from './geometry/ActivateSpawner';
 
-import CameraMode from './geometry/CameraMode';
+import CameraMode from './camera/CameraMode';
 
 
 const App = () => {
@@ -47,6 +47,7 @@ const App = () => {
 					<Lights />
 
 					{/* switch between two different camera controls */}
+					{{/* Differs from "Code Sand Box" repo */ }}
 					{/* "CameraMode" components uses "useThree" (fiber-hook) (and must be inside the canvas) */}
 					<CameraMode cameraMode={cameraMode} setmove={setmove} />
 
@@ -62,3 +63,4 @@ const App = () => {
 }
 
 export default App
+

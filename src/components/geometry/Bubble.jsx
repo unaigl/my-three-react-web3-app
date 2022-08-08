@@ -1,10 +1,7 @@
 import { useSphere } from '@react-three/cannon';
-import { useFrame, useLoader } from '@react-three/fiber';
-import { Vector3 } from 'three';
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import PropTypes from 'prop-types';
+import { useFrame } from '@react-three/fiber';
 
-const Attackers = (props) => {
+const Bubble = (props) => {
 
 	let zMovement = -20;
 
@@ -13,7 +10,7 @@ const Attackers = (props) => {
 		position: [props.pos.x, props.pos.y, props.pos.z - 200],
 		type: 'Dynamic',
 		// args: [1, 1, 1],
-		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
+		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Bubble
 		collisionFilterGroup: 4,
 		// No te va a colisionar, sino que vas a colisionar contra el
 		collisionFilterMask: 1,
@@ -27,7 +24,7 @@ const Attackers = (props) => {
 		);
 	});
 
-	for (let i = 1; i < 20; i++) {
+	for (let i = 1; i < 3; i++) {
 		window.setTimeout(() => {
 			zMovement = -50;
 			api.position.set(0, 0, -zMovement);
@@ -43,4 +40,4 @@ const Attackers = (props) => {
 	);
 };
 
-export default Attackers;
+export default Bubble;

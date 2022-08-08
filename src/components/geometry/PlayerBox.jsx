@@ -1,61 +1,39 @@
 import { useBox, } from '@react-three/cannon';
 import { useFrame } from '@react-three/fiber';
-import PropTypes from 'prop-types'
-import { useEffect } from 'react'
-// import { UtilsGameContext } from "../context/GameContext";
+import { useThree } from '@react-three/fiber'
 
 const PlayerBox = (props) => {
-	// const utils = useContext(UtilsGameContext);
 
-	// let scores: (string | number)[];
-	// scores = [ref, api];
-
-	// var ref = useRef<MutableRefObject<RefObject<Object3D<Event>> | undefined>>();
-	// var api = useRef<MutableRefObject<PublicApi | undefined>>();
+	const { camera } = useThree()
 
 	const [ref, api] = useBox(() => ({
 		mass: 0,
 		type: 'Dynamic',
-		// position: [0, 0, 0],
-		args: [1, 1, 1],
+		position: [0, 0, -5],
+		args: [0.3, 0.3, 0.1], // collision box size
 		collisionFilterGroup: 1,
 		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
 		collisionFilterMask: 4,
 		onCollide: (e) => {
-			// if (e.collisionFilters.bodyFilterGroup == 4)
-			props.gameover.setgameover(true)
-			// window.scrollTo(0, 0.5 * window.innerHeight);
-			// console.log(props.gameover.gameover);
-			props.setplay(false);
-			setTimeout(() => {
-				props.gameover.setgameover(false)
-			}, 1000);
-
+			props.setPlay(false);
+			console.log('game over')
 		},
 	}));
 
 	// Tambien simula el movimiento de la camara (y por lo tnato el del objetivo), para poder tener un collider para el game over
 	useFrame(() => {
-		api.position.set(props.move.x, props.move.y, props.move.z);
+		api.position.set(camera.position.x, camera.position.y, -2);
 	});
 
 	return (
 		<>
 			<mesh ref={ref}>
-				<boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
-				{/* <meshStandardMaterial /> */}
+				<boxBufferGeometry attach='geometry' args={[0.1, 0.1, 0.1]} /> {/* box size */}
+				<meshStandardMaterial attach="material" color={'#000'} />
+
 			</mesh>
 		</>
 	);
-};
-
-PlayerBox.propTypes = {
-	move: PropTypes.shape({
-		x: PropTypes.number,
-		y: PropTypes.number,
-		z: PropTypes.number,
-	}),
-	setplay: PropTypes.func,
 };
 
 export default PlayerBox;

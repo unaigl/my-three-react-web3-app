@@ -1,8 +1,8 @@
 import { Vector3 } from 'three';
-import Attackers from './Attackers';
+import Bubble from './Bubble';
 
 
-const Spawner = (props) => {
+const Spawner = () => {
 
 
 	function randomIntBetween(min, max) { // min and max included 
@@ -37,7 +37,7 @@ const Spawner = (props) => {
 	return (
 		<group>
 			{attackersArray.map((attackers, key) => {
-				return <Attackers
+				return <Bubble
 					key={key}
 					pos={attackers[0]}
 					wait={attackers[1]}

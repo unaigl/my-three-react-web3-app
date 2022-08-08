@@ -2,19 +2,19 @@ import React, { useEffect } from 'react'
 import { useThree } from '@react-three/fiber'
 import { CameraShake, OrbitControls, Html } from '@react-three/drei';
 
-import CameraRig from '../camera/CameraRig';
+import CameraRig from './CameraRig';
 
 const CameraMode = (props) => {
 
     const { camera } = useThree()
 
     useEffect(() => {
-        // accesing private variables of the camera
+        // @dev This code shows how to set camera rotation in case where variables were public
+        // In this case, library has been built not to touch this variables due to internal algorithm
+        // Even so, it still rotates the camera at a random "rotation"
         camera.rotation._x = 0;
         camera.rotation._y = 0;
         camera.rotation._z = 0;
-        console.log('camera', camera)
-        console.log('camera.rotation', camera.rotation)
         // setting camera rotation when camera mode is changed 
     }, [props.cameraMode])
 
