@@ -2,6 +2,8 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { Vector3 } from "three";
 
 // Using "CameraRig", "camera" position reacts to our mouse movement
+// "CameraMode" components uses "useThree" (fiber-hook) (and must be inside the canvas)
+
 function CameraRig(props) {
   const vec = new Vector3();
   const { camera, mouse } = useThree();

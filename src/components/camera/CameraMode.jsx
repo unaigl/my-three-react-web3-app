@@ -9,23 +9,25 @@ const CameraMode = (props) => {
     const { camera } = useThree()
 
     useEffect(() => {
-        // @dev This code shows how to set camera rotation in case where variables were public
-        // In this case, library has been built not to touch this variables due to internal algorithm
-        // Even so, it still rotates the camera at a random "rotation"
+        // accesing private variables of the camera
         camera.rotation._x = 0;
         camera.rotation._y = 0;
         camera.rotation._z = 0;
+        console.log('camera', camera)
+        console.log('camera.rotation', camera.rotation)
         // setting camera rotation when camera mode is changed 
     }, [props.cameraMode])
 
 
     return (
         <>
-            {props.cameraMode ? <>< OrbitControls
+            {props.cameraMode ? <div>< OrbitControls
                 enableZoom={true}
                 enablePan={true}
                 enableRotate={true}
             />
+
+
                 {/* HTML is added only in Orbitcontrols, because creates a conflict using with "CameraShake" or "CameraRig" */}
                 < Html
                     as='h4'
@@ -34,9 +36,9 @@ const CameraMode = (props) => {
                 >
                     <h4 className="htmlcanvas" >Click to switch between two different camera controls</h4>
                 </Html >
-            </>
+            </div>
                 :
-                <>
+                <div>
                     {/* Drei component, creates a balanced movement in our "camera" position */}
                     <CameraShake
                         yawFrequency={0.1}
@@ -45,7 +47,7 @@ const CameraMode = (props) => {
                     />
                     {/* Using "CameraRig", "camera" position reacts to our mouse movement */}
                     <CameraRig setmove={props.setmove} />
-                </>
+                </div>
             }
         </>
     )
