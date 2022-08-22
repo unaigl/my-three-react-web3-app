@@ -26,8 +26,6 @@ const CameraMode = (props) => {
                 enablePan={true}
                 enableRotate={true}
             />
-
-
                 {/* HTML is added only in Orbitcontrols, because creates a conflict using with "CameraShake" or "CameraRig" */}
                 < Html
                     as='h4'
