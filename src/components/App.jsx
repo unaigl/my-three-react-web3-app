@@ -19,9 +19,9 @@ const App = () => {
 
 	return (
 		<div className="row app">
-			<div className="col-lg-12 canvas">
+			<div className="col-lg-12 app">
 				{/* Out of canvas */}
-				<Web3ContextProvider style={{ height: '15vh' }}>
+				<Web3ContextProvider style={{ height: '15vh' }} className='header'>
 					<ConnectWallet />
 					{/* components */}
 				</Web3ContextProvider>
@@ -31,6 +31,7 @@ const App = () => {
 						rotation: [0, 0, 0]
 					}}
 					style={{ height: '80vh' }}
+					className='canvas'
 				>
 					{/* Details in "Stars" component */}
 					<Stars />

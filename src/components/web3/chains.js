@@ -16,7 +16,12 @@ export const changeChainById = async (chainID) => {
         });
       } catch (addError) {
         console.log("error: ", addError);
-        alert("Disconnect wallet from metamask configuration and try again!");
+        if (ex.code === 32002)
+          return alert("already pending request from user in metamask");
+        else
+          return alert(
+            "Disconnect wallet from metamask configuration and try again!"
+          );
       }
     }
     // handle other "switch" errors

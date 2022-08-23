@@ -1,7 +1,14 @@
-.canvas {
-  height: 100vh;
-  width: 100vw;
+.app {
+  height: 100%;
+  width: 100%;
 }
+.canvas {
+  height: 85%;
+}
+.header {
+  height: 15%;
+}
+
 .web3-navbar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

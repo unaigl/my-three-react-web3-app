@@ -5,6 +5,7 @@ import "../App.css"
 import "../Button.css"
 import "../Select.css"
 import { changeChainById } from "./chains"
+import ClaimToken from "./ClaimToken"
 
 const ConnectWallet = () => {
     const injectedConnector = new InjectedConnector({
@@ -55,6 +56,13 @@ const ConnectWallet = () => {
                     <option key={97} value={97}>BSC testnet</option>
                     <option key={80001} value={80001}>Mumbai testnet</option>
                 </select>
+            </div>
+            <div>
+                <ClaimToken
+                    provider={library}
+                    accounts={account}
+                    chainId={chainId}
+                />
             </div>
         </main>
     )
