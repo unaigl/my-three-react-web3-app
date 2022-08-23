@@ -1,6 +1,6 @@
 
 import { burnToken, claimToken } from './transaction'
-
+import "../App.css"
 
 export default function TransactionMetaMask(props) {
 
@@ -33,12 +33,12 @@ export default function TransactionMetaMask(props) {
     }
 
     return (
-        <>
+        <div className='token-buttons'>
             <button type="button" className='button-3' onClick={claimTokenTx}>
                 Claim Token
             </button>
             <button type="button" className='button-3' onClick={burnTokenTx}>
-                Claim Token
+                Burn Token
             </button>
             {/* <Card
                 accounts={accounts}
@@ -53,6 +53,6 @@ export default function TransactionMetaMask(props) {
                 url={'https://dev.to/metamask/a-guide-to-metamask-ecosystem-leading-ethereum-blockchain-wallet-59k7'}
                 urlText={' Metamask'}
             /> */}
-        </>
+        </div>
     )
 }
