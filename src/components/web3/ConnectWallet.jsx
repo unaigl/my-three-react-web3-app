@@ -3,6 +3,7 @@ import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import "../App.css"
 import "../Button.css"
+import "../Select.css"
 import { changeChainById } from "./chains"
 
 const ConnectWallet = () => {
@@ -22,6 +23,12 @@ const ConnectWallet = () => {
         changeChainById(_chainID)
     }
 
+    useEffect(() => {
+        if (!chainId) return
+        document.getElementById('select-form').value = chainId
+    }, [chainId])
+
+
 
     return (
         <main className="web3-navbar">
@@ -39,8 +46,8 @@ const ConnectWallet = () => {
                     </button>
                 )}
             </div>
-            <div>
-                <select onChange={e => {
+            <div className='box'>
+                <select id='select-form' onChange={e => {
                     let _chainID = e.target.value
                     changeChain(_chainID)
                 }}>

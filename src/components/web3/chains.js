@@ -1,38 +1,28 @@
 export const changeChainById = async (chainID) => {
   if (!window.ethereum)
     return alert("install metamask extension in your browser");
-  let chain = chains[chainID];
-  let chainIDN = chainID !== Number ? Number(chainID) : chainID;
-  // if (chain) return chain;
-  // else return "Chains available: ETH, BSC, Polygon";
   try {
-    await window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [chains[chainID]],
+    await ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: chains[chainID].chainId }],
     });
-  } catch (error) {
-    console.log("chainID", typeof chainID);
-    console.log("chainID", typeof chainIDN);
-    console.log("chain", chain);
-    console.log("obj", {
-      method: "wallet_addEthereumChain",
-      params: [chain],
-    });
+  } catch (switchError) {
+    // This error code indicates that the chain has not been added to MetaMask.
+    if (switchError.code === 4902) {
+      try {
+        await ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [chains[chainID]],
+        });
+      } catch (addError) {
+        console.log("error: ", addError);
+        alert("Disconnect wallet from metamask configuration and try again!");
+      }
+    }
+    // handle other "switch" errors
   }
+  return;
 };
-
-/* 
-{
-        chainId: "0x38",
-        chainName: "Binance smart chain",
-        nativeCurrency: {
-          name: "BNB",
-          symbol: "Binance",
-          decimals: 18,
-        },
-        rpcUrls: ["https://bsc-dataseed.binance.org/"],
-      },
-       */
 
 const ETH = {
   name: "Ether",
@@ -72,7 +62,12 @@ const chains = {
     chainId: "0x61",
     chainName: "Binance Testnet",
     nativeCurrency: BNB,
-    rpcUrls: "https://data-seed-prebsc-1-s3.binance.org:8545/",
+    rpcUrls: [
+      "https://data-seed-prebsc-1-s1.binance.org:8545/",
+      "https://data-seed-prebsc-2-s1.binance.org:8545/",
+      "http://data-seed-prebsc-1-s2.binance.org:8545/",
+      "https://data-seed-prebsc-2-s3.binance.org:8545/",
+    ],
     // rpcUrls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
     blockExplorerUrls: ["https://testnet.bscscan.com/"],
   },
