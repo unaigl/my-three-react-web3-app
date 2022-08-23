@@ -3,12 +3,12 @@ import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import "../App.css"
 import "../Button.css"
+import { changeChainById } from "./chains"
 
 const ConnectWallet = () => {
     const injectedConnector = new InjectedConnector({
-        supportedChainIds: [1, 4, 5, 10, 42, 56, 69, 97, 137, 80001, 42161, 43113, 43114, 421611],
+        supportedChainIds: [1, 97, 80001],
     })
-
 
     const { chainId, account, activate, active, library, deactivate } = useWeb3React()
 
@@ -18,9 +18,9 @@ const ConnectWallet = () => {
     const deactivateWallet = () => {
         deactivate(injectedConnector)
     }
-
-    // useEffect(() => {
-    // });
+    const changeChain = (_chainID) => {
+        changeChainById(_chainID)
+    }
 
 
     return (
@@ -38,6 +38,16 @@ const ConnectWallet = () => {
                         Connect Wallet
                     </button>
                 )}
+            </div>
+            <div>
+                <select onChange={e => {
+                    let _chainID = e.target.value
+                    changeChain(_chainID)
+                }}>
+                    <option key={1} value={1}>Ethereum Chain</option>
+                    <option key={97} value={97}>BSC testnet</option>
+                    <option key={80001} value={80001}>Mumbai testnet</option>
+                </select>
             </div>
         </main>
     )
