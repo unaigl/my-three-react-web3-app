@@ -1,4 +1,5 @@
 import { Contract } from "@ethersproject/contracts";
+import { Web3Provider } from "@ethersproject/providers";
 
 // Same ABI for all SC living in EVM compatible networks
 export const contractAbi = [
@@ -188,9 +189,14 @@ const contractsAddress = {
   80001: "0x41e6913ce749018910e45980996dac1f99012c96", // MUMBAI
   97: "0x6ec4c5ce6cc67729d89785f715e103e5981c9780", // BSC Test
 };
+// TODO
+export const getContract = (/* library, account, */ chainId) => {
+  // web3-react in v6 doesn't afford a way to get signer
+  // const signer = provider.getSigner(account[0]).connectUnchecked();
 
-export const getContract = (library, account, chainId) => {
-  const signer = library.getSigner(account[0]).connectUnchecked();
+  // using ethersproject to set signer using default provider
+  const provider = new Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
 
   const contractAddress = contractsAddress[chainId];
 
