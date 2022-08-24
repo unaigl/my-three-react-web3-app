@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
+import { useEffect } from 'react'
 import "../App.css"
 import "../Button.css"
 import "../Select.css"
-import { changeChainById } from "./chains"
 import ClaimToken from "./ClaimToken"
+import { changeChainById } from "./transaction/chains"
 
 const ConnectWallet = () => {
 
@@ -13,7 +13,7 @@ const ConnectWallet = () => {
         supportedChainIds: [1, 97, 80001],
     })
 
-    const { chainId, account, activate, active, library, deactivate, connector } = useWeb3React()
+    const { chainId, account, activate, active, deactivate } = useWeb3React()
 
     const activateWallet = () => {
         activate(injectedConnector)
@@ -29,12 +29,6 @@ const ConnectWallet = () => {
         if (!chainId) return
         document.getElementById('select-form').value = chainId
     }, [chainId])
-
-    // // attempt to connect eagerly on mount
-    // useEffect(() => {
-    //     ethereum.request({ method: 'eth_requestAccounts' });
-    // }, [])
-
 
     return (
         <main className="web3-navbar">
@@ -64,7 +58,6 @@ const ConnectWallet = () => {
             </div>
             <div>
                 <ClaimToken
-                    provider={connector}
                     account={account}
                     chainId={chainId}
                 />

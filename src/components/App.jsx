@@ -23,7 +23,6 @@ const App = () => {
 				{/* Out of canvas */}
 				<Web3ContextProvider style={{ height: '15vh' }} className='header'>
 					<ConnectWallet />
-					{/* components */}
 				</Web3ContextProvider>
 				<Canvas
 					camera={{

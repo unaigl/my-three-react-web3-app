@@ -1,9 +1,9 @@
 import { getContract } from "./contract";
 
 // writeToContractUsingWeb3React
-const claimToken = async (provider, account, chainId, amount) => {
+const claimToken = async (account, chainId, amount) => {
   try {
-    const myContract = getContract(/* provider, account,  */ chainId);
+    const myContract = getContract(chainId);
     // Metamask calculates gas, but, for walletConnect and coinbase we need to set gas limit
     const overrides = {
       gasLimit: 230000,
@@ -22,9 +22,9 @@ const claimToken = async (provider, account, chainId, amount) => {
   }
 };
 
-const burnToken = async (provider, account, chainId, amount) => {
+const burnToken = async (chainId, amount) => {
   try {
-    const myContract = getContract(/* provider, account,  */ chainId);
+    const myContract = getContract(chainId);
     // Metamask calculates gas, but, for walletConnect and coinbase we need to set gas limit
     const overrides = {
       gasLimit: 230000,
