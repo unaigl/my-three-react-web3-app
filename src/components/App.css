@@ -11,11 +11,17 @@
 
 .web3-navbar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   /* grid-template-rows: 5fr 1fr 5fr; */
   place-items: center;
   font-size: 12px;
   padding: 20px 50px 20px 50px;
+  width: 1200px;
+}
+@media (max-width: 1000px) {
+  .web3-navbar {
+    max-width: 500px;
+  }
 }
 .connect-box {
   padding-left: 40px;

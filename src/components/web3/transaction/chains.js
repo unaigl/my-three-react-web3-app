@@ -51,12 +51,12 @@ const chains = {
     chainName: "Ethereum mainnet",
     nativeCurrency: ETH,
     rpcUrls: [
-      import.meta.env.VITE_APP_INFURA_KEY
-        ? `https://mainnet.infura.io/v3/${import.meta.env.VITE_APP_INFURA_KEY}`
-        : undefined,
-      import.meta.env.VITE_APP_ALCHEMY_KEY
+      // import.meta.env.VITE_APP_INFURA_KEY
+      //   ? `https://mainnet.infura.io/v3/${import.meta.env.VITE_APP_INFURA_KEY}`
+      //   : undefined,
+      import.meta.env.VITE_APP_ALCHEMY_MAINNET_KEY
         ? `https://eth-mainnet.alchemyapi.io/v2/${
-            import.meta.env.VITE_APP_ALCHEMY_KEY
+            import.meta.env.VITE_APP_ALCHEMY_MAINNET_KEY
           }`
         : undefined,
       "https://cloudflare-eth.com",
@@ -81,12 +81,12 @@ const chains = {
     chainName: "Polygon Mumbai",
     nativeCurrency: MATIC,
     rpcUrls: [
-      import.meta.env.VITE_APP_INFURA_KEY
-        ? `https://polygon-mumbai.infura.io/v3/${
-            import.meta.env.VITE_APP_INFURA_KEY
+      import.meta.env.VITE_APP_ALCHEMY_MAINNET_KEY
+        ? `https://polygon-mumbai.g.alchemy.com/v2/${
+            import.meta.env.VITE_APP_ALCHEMY_POLYGON_KEY
           }`
         : undefined,
-    ].filter((url) => url !== undefined),
+    ],
     blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
   },
 };

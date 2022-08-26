@@ -17,6 +17,7 @@ const claimToken = async (account, chainId, amount) => {
     if (ex.code === 32002)
       return alert("already pending request from user in metamask");
 
+    console.log("ERROR", ex);
     if (ex.code === 4001) return alert("User denied transaction signature");
     return alert('"Connect / Disconnect" your wallet and try again.');
   }
@@ -37,6 +38,7 @@ const burnToken = async (chainId, amount) => {
     console.log(ex);
     if (ex.code === 32002)
       return alert("already pending request from user in metamask");
+    console.log("ERROR", ex);
     if (ex.code === 4001) return alert("User denied transaction signature");
     return alert('"Connect / Disconnect" your wallet and try again.');
   }

@@ -24,6 +24,9 @@ const ConnectWallet = () => {
     const changeChain = (_chainID) => {
         changeChainById(_chainID)
     }
+    const wallet = () => {
+        return `0x${account.substring(2, 6)}...${account.slice(-4)}`
+    }
 
     useEffect(() => {
         if (!chainId) return
@@ -35,7 +38,7 @@ const ConnectWallet = () => {
             <h2 >Welcome to 3D web3 series</h2>
             <div className='connect-box'>
                 <b>ChainId: {chainId}</b>
-                <div>Account: {account}</div>
+                <div>Account: {account ? wallet() : ""}</div>
                 {active ? (
                     <button type="button" className='button-4' onClick={deactivateWallet}>
                         Disconnect

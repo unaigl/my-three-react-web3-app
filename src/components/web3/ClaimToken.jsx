@@ -6,7 +6,7 @@ export default function TransactionMetaMask(props) {
 
     const claimTokenTx = () => {
         if (props.chainId === 97 || props.chainId === 80001) {
-            claimToken(props.provider, props.account, props.chainId, 1)
+            claimToken(props.account, props.chainId, 1)
         } else {
             scrollTo(0, 0)
             alert('Tokens are only available in BSC and Polygon testnets')
@@ -14,7 +14,7 @@ export default function TransactionMetaMask(props) {
     }
     const burnTokenTx = () => {
         if (props.chainId === 97 || props.chainId === 80001) {
-            burnToken(props.provider, props.account, props.chainId, 1)
+            burnToken(props.chainId, 1)
         } else {
             scrollTo(0, 0)
             alert('Tokens are only available in BSC and Polygon testnets')
